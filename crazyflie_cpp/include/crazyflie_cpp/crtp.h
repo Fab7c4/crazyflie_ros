@@ -185,6 +185,29 @@ struct crtpSetpointRequest
   uint16_t thrust;
 }  __attribute__((packed));
 
+struct crtpDirectMotorControlRequest
+{
+  crtpDirectMotorControlRequest(
+    float topRight,
+    float topLeft,
+    float bottomRight,
+    float bottomLeft)
+    : header(0x07, 0)
+    , type(6)
+    , topRight(topRight)
+    , topLeft(topLeft)
+    , bottomLeft(bottomLeft)
+    , bottomRight(bottomRight)
+  {
+  }
+  const crtp header;
+  const uint8_t type;
+  float topRight;
+  float topLeft;
+  float bottomRight;
+  float bottomLeft;
+}  __attribute__((packed));
+
 // Port 4 (Memory access)
 
 // Port 5 (Data logging)

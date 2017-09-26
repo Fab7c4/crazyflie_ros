@@ -108,6 +108,16 @@ void Crazyflie::sendSetpoint(
   sendPacket((const uint8_t*)&request, sizeof(request));
 }
 
+void Crazyflie::sendDirectMotorControl(
+  float topRight,
+  float topLeft,
+  float bottomRight,
+  float bottomLeft)
+{
+  crtpDirectMotorControlRequest request(topRight, topLeft, bottomRight, bottomLeft);
+  sendPacket((const uint8_t*)&request, sizeof(request));
+}
+
 void Crazyflie::sendExternalPositionUpdate(
   float x,
   float y,

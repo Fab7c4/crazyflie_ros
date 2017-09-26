@@ -75,6 +75,12 @@ public:
     float yawrate,
     uint16_t thrust);
 
+  void sendDirectMotorControl(
+      float topRight,
+      float topLeft,
+      float bottomRight,
+      float bottomLeft);
+
   void sendExternalPositionUpdate(
     float x,
     float y,
