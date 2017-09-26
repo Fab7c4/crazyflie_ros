@@ -256,12 +256,7 @@ private:
     const geometry_msgs::Twist::ConstPtr& msg)
   {
     if (!m_isEmergency) {
-      float roll = msg->linear.y + m_roll_trim;
-      float pitch = - (msg->linear.x + m_pitch_trim);
-      float yawrate = msg->angular.z;
-      uint16_t thrust = std::min<uint16_t>(std::max<float>(msg->linear.z, 0.0), 60000);
-
-      m_cf.sendSetpoint(roll, pitch, yawrate, thrust);
+      m_cf.sendDirectMotorControl(msg->linear.x, msg->linear.y, msg->angular.x, msg->angular.y);
       m_sentSetpoint = true;
     }
   }
